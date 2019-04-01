@@ -7,9 +7,18 @@ def game_hash
       :team_name => "Brooklyn Nets",
       colors: ["Black", "White"],
       players: {
-        "Alan Anderson" => {number: 0, shoe: 16, points: 22, rebounds: 12, assists: 12, steals: 3, blocks: 1, slam_dunks: 1
+        "Alan Anderson" => {
+          number: 0, 
+          shoe: 16, 
+          points: 22, 
+          rebounds: 12, 
+          assists: 12, 
+          steals: 3, 
+          blocks: 1, 
+          slam_dunks: 1
         },
-        "Reggie Evans" => {number: 30, shoe: 14, points: 12, rebounds: 12, assists: 12, steals: 12, blocks: 12, slam_dunks: 7
+        "Reggie Evans" => {
+          number: 30, shoe: 14, points: 12, rebounds: 12, assists: 12, steals: 12, blocks: 12, slam_dunks: 7
         },
         "Brook Lopez" => {number: 11, shoe:17, points: 17, rebounds: 19, assists: 10, steals: 3, blocks: 1, slam_dunks: 15
         },
@@ -39,19 +48,17 @@ def game_hash
 end
 
 def num_points_scored(name)
-  points_scored = ""
   game_hash.each do |location, team_data|
     team_data.each do |data, player_level|
       if data == :players
         player_level.each do |baller, detail|
           if baller == name
-            points_scored = detail[:points]
+            return detail[:points]
+          end
         end
-      end
       end
     end
   end
-  points_scored
 end
 
 def shoe_size(name)
